@@ -11,6 +11,8 @@ import plotly.graph_objects as go
 app = dash.Dash(__name__)
 server = app.server
 
+df_data = pd.read_csv("supermarket_sales.csv", sep=",")
+df_data["Date"] = pd.to_datetime(df_data["Date"])
 
 #Layout
 app.layout = html.Div(children=[
@@ -21,6 +23,5 @@ app.layout = html.Div(children=[
 #Callbacks
 
 #Run server
-
 if __name__ == "__main__":
     app.run_server(port=8050, debug=True)
